@@ -16,3 +16,9 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 - Assets de marca SIGRE (`docs/branding/`).
 - ADR 0001: alcance del prototipo generalizado a espacios de convivencia
   compartida, sin rol de prestador externo.
+- Plantilla oficial "02: Especificación de Requerimientos" y material de
+  cátedra sobre especificación de casos de uso (`docs/00-gestion/`).
+- Alcance del problema y especificación de 39 casos de uso
+  (`docs/01-requerimientos/`), con inventario de actores y relaciones.
+- ADR 0002: roles de propietario e inquilino por unidad.
+- ADR 0003: circuito de estados del reclamo y cierre por confirmación.
