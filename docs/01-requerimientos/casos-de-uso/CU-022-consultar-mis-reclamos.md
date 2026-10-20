@@ -21,7 +21,7 @@
    - Estado: lista desplegable, opcional, con las opciones "Abiertos"
      (todos excepto "Cerrado", "Rechazado" y "Cancelado"), "Todos",
      "Ingresado", "Asignado", "En curso", "Esperando repuesto/tercero",
-     "Resuelto", "Reabierto", "Cerrado", "Rechazado" y "Cancelado". Valor
+     "Resuelto", "Cerrado", "Rechazado" y "Cancelado". Valor
      por defecto: "Abiertos".
    - Ubicación: lista desplegable, opcional, que contiene "Todas", las
      unidades vinculadas al residente (se muestra el identificador) y las
@@ -29,14 +29,18 @@
      defecto: "Todas".
    - Origen: lista desplegable, opcional, con las opciones "Todos",
      "Registrados por mí", "Adheridos" y, solo si el residente es
-     propietario de alguna unidad, "De mis unidades". Valor por defecto:
+     propietario o inquilino de alguna unidad, "De mis unidades". Valor por
+     defecto:
      "Todos".
 3. El sistema busca los reclamos que cumplen con los filtros seleccionados,
    entre los siguientes:
    - los reclamos registrados por el residente.
    - los reclamos comunitarios a los que el residente adhirió.
-   - si el residente es propietario, los reclamos registrados sobre sus
-     unidades mientras es su propietario.
+   - si el residente es propietario, todos los reclamos registrados sobre
+     las unidades de las que es propietario actualmente, incluidos los
+     registrados antes de que lo fuera.
+   - si el residente es inquilino, los reclamos registrados sobre la unidad
+     que alquila desde que es su inquilino.
 
    - Si hay resultados, los muestra en un listado paginado de 20 por
      página, ordenado por fecha de última actualización en forma
@@ -72,8 +76,12 @@ Ninguno.
 
 ## Observaciones
 
-- El propietario ve los reclamos que su inquilino registra sobre la unidad
-  mientras él sea su propietario. Si deja de serlo, conserva solo los que
-  él mismo registró (ver CU-007).
+- El propietario actual ve todos los reclamos registrados sobre su
+  unidad, incluidos los de su inquilino y los de propietarios e inquilinos
+  anteriores: el historial pertenece a la unidad. Si deja de ser
+  propietario, conserva solo los que él mismo registró (ver CU-007).
+- El inquilino actual ve los reclamos que el propietario u otros
+  registren sobre la unidad que alquila mientras vive en ella, pero no los
+  anteriores a su llegada.
 - Un usuario sin unidades vinculadas puede usar este caso de uso para
   consultar los reclamos que registró anteriormente.

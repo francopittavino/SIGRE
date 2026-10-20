@@ -58,9 +58,16 @@
 
 - Los comentarios no pueden editarse ni eliminarse, igual que el
   historial del reclamo.
-- En los reclamos comunitarios, los comentarios de residentes se muestran
-  a los demás residentes con el autor "Residente", sin su nombre; el
-  administrador ve el nombre completo.
+- Los comentarios visibles del administrador se notifican solo al autor
+  del reclamo. Los adherentes y el propietario reciben avisos únicamente
+  ante cambios de estado, para no saturarlos de correos.
+- Cada comentario se muestra con el nombre y apellido de su autor, sea
+  residente o administrador. Los comentarios visibles del administrador
+  los ven todos los que tienen acceso al reclamo; los internos, solo el
+  administrador.
 - Tienen acceso al reclamo el administrador, el residente que lo
-  registró, el propietario de la unidad mientras sea su propietario y, si
-  el reclamo es comunitario, cualquier residente con unidades vinculadas.
+  registró, el propietario actual de la unidad, el inquilino actual (para
+  los reclamos registrados mientras es inquilino), el propietario y el
+  inquilino actuales de la unidad involucrada en un reclamo de convivencia
+  y, si el reclamo es comunitario, cualquier residente con unidades
+  vinculadas.

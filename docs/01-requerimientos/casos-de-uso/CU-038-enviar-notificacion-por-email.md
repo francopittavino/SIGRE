@@ -46,10 +46,14 @@ Ninguno.
 - El envío se realiza en segundo plano: el caso de uso que lo incluye no
   espera el resultado y continúa normalmente, aunque el envío falle.
 - Los destinatarios los define el caso de uso que incluye a este. Las
-  reglas generales son: las notificaciones de cambio de estado se envían
-  al autor del reclamo, a sus adherentes y al propietario de la unidad, si
-  no es el autor; a los usuarios dados de baja no se les envían
-  notificaciones, salvo el aviso de la propia baja.
+  notificaciones de cambio de estado se envían a los **interesados del
+  reclamo**: el autor, los adherentes, el propietario actual de la unidad
+  sobre la que se registró (si no es el autor) y, en los reclamos de
+  convivencia con unidad involucrada, el propietario y el inquilino
+  actuales de esa unidad. En todos los casos se omite al usuario que
+  realizó la acción.
+- A los usuarios dados de baja no se les envían notificaciones, salvo el
+  aviso de la propia baja.
 - Los enlaces enviados por email (invitación, recuperación de contraseña,
   confirmación de email) tienen su vencimiento definido en el caso de uso
   que los genera.

@@ -36,16 +36,14 @@
    seleccionada en el período indicado, en cualquier estado.
    - Si hay resultados, muestra:
      - Un resumen con la cantidad total de reclamos, la cantidad por
-       rubro, la cantidad de reclamos reabiertos al menos una vez y, para
-       cada rubro con 3 o más reclamos en los últimos 12 meses, la
+       rubro y, para cada rubro con 3 o más reclamos en los últimos 12 meses, la
        indicación "Problema recurrente".
      - Un listado paginado de 20 por página, ordenado por fecha de
        registro en forma descendente. Para cada reclamo se muestra:
-       número, título, rubro, estado, fecha de registro, fecha de cierre,
-       días hasta la resolución y cantidad de reaperturas.
+       número, título, rubro, estado, fecha de registro, fecha de cierre
+       y días hasta la resolución.
 
-     Para cada reclamo al que el usuario tiene acceso se muestra el botón
-     "Ver detalle".
+     Para cada reclamo se muestra el botón "Ver detalle".
      Punto de extensión: "VerReclamoDelHistorial".
    - Si no hay resultados, muestra el mensaje "No hay reclamos registrados
      sobre esta ubicación en el período seleccionado".
@@ -65,11 +63,10 @@ Ninguno.
 ## Observaciones
 
 - El historial queda asociado a la ubicación y no a quien registró los
-  reclamos: el propietario ve en el resumen y en el listado todos los
-  reclamos de su unidad, incluidos los registrados antes de que fuera
-  propietario. Sin embargo, solo puede ver el detalle de los reclamos a
-  los que tiene acceso (ver CU-024).
+  reclamos: el propietario actual ve todos los reclamos de su unidad, con
+  su detalle, incluidos los registrados antes de que fuera propietario
+  (ver CU-024).
 - Los reclamos de convivencia en los que la unidad figura como unidad
   involucrada no forman parte de su historial.
 - "Días hasta la resolución" se calcula desde la fecha de registro hasta
-  la primera vez que el reclamo pasó a "Resuelto".
+  que el reclamo pasó a "Resuelto".

@@ -37,7 +37,8 @@ y adherir a ellos.
   IA y el administrador lo confirma o lo modifica.
 - Circuito de estados del reclamo: Ingresado → Asignado → En curso →
   Esperando repuesto/tercero → Resuelto → Cerrado, con las variantes
-  Rechazado, Reabierto y Cancelado.
+  Rechazado y Cancelado. El autor también puede dar su reclamo por
+  resuelto.
 - Historial inmutable de cada cambio de estado, con autor y fecha,
   consultable por reclamo y por unidad o instalación.
 - Comentarios internos de la administración y comentarios visibles para el

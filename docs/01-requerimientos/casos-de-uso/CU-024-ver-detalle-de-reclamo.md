@@ -19,8 +19,12 @@
 2. El sistema valida que el usuario tenga acceso al reclamo. Tienen acceso:
    - el administrador, a todos los reclamos.
    - el residente que lo registró.
-   - el propietario de la unidad sobre la que se registró, mientras sea su
-     propietario.
+   - el propietario actual de la unidad sobre la que se registró, incluso
+     si el reclamo se registró antes de que fuera su propietario.
+   - el inquilino actual de la unidad sobre la que se registró, si el
+     reclamo se registró mientras es su inquilino.
+   - el propietario y el inquilino actuales de la unidad involucrada, si
+     el reclamo es de convivencia.
    - cualquier residente con unidades vinculadas, si el reclamo es
      comunitario.
 3. El sistema muestra:
@@ -34,7 +38,8 @@
    - Fecha de registro y, si fue categorizado, fecha objetivo de
      resolución, con la indicación "Vencido" si se superó y el reclamo
      sigue abierto.
-   - Cantidad de adhesiones, si es comunitario.
+   - Si es comunitario, la cantidad de adhesiones y los votos de
+     resolución ("*N* de *M* residentes lo dieron por resuelto").
    - Las fotos adjuntas, en miniatura; al presionar una, se muestra en
      tamaño completo.
    - El historial del reclamo, ordenado por fecha en forma ascendente:
@@ -43,8 +48,10 @@
    - Los comentarios, ordenados por fecha en forma ascendente: para cada
      uno, la fecha y hora, el autor y el texto.
 
-   Si el usuario es el administrador, el sistema muestra además el nombre
-   y apellido del autor del reclamo, la lista de adherentes y los
+   - El nombre y apellido del autor del reclamo y, si es comunitario, la
+     lista de adherentes.
+
+   Si el usuario es el administrador, el sistema muestra además los
    comentarios internos, identificados con la indicación "Interno".
    Debajo se muestran los botones de las acciones disponibles para el
    usuario según el estado del reclamo.
@@ -64,10 +71,14 @@ Ninguno.
 ## Observaciones
 
 - El residente nunca ve los comentarios internos de la administración.
-- En los reclamos comunitarios, los residentes que no son autores no ven
-  quién registró el reclamo ni quiénes adhirieron.
-- La unidad involucrada en un reclamo de convivencia no tiene acceso a ese
-  reclamo.
+- No hay anonimato: todos los que tienen acceso al reclamo ven quién lo
+  registró, quiénes adhirieron y el nombre de quien escribió cada
+  comentario.
+- En los reclamos de convivencia, el propietario y el inquilino de la
+  unidad involucrada ven el reclamo completo, incluidos el nombre y
+  apellido de su autor y la unidad desde la que se registró, y pueden
+  comentar (CU-033). No pueden adherir, modificar, cancelar ni marcarlo
+  como resuelto.
 - Las acciones disponibles en el punto de extensión dependen del usuario y
   del estado del reclamo, y se detallan en cada caso de uso que lo
   extiende.

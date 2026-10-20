@@ -35,7 +35,8 @@
       "Ingresado" y no tiene adhesiones, cambia el estado a "Cancelado" y
       lo registra en el historial del reclamo con el motivo "Baja del
       usuario".
-   e. retira todas las adhesiones del usuario a reclamos comunitarios.
+   e. retira todas las adhesiones del usuario a reclamos comunitarios,
+      junto con sus votos de resolución (ver CU-028).
 7. include(Enviar notificación por email), con el aviso de la baja,
    dirigido al usuario.
 8. El sistema muestra el mensaje "El usuario fue dado de baja".
@@ -68,6 +69,7 @@
   "Ingresado" y los "Ingresado" con adhesiones) siguen su curso y el
   administrador los sigue gestionando. Al usuario dado de baja ya no se le
   envían notificaciones.
-- Al retirar sus adhesiones, se recalcula la prioridad de los reclamos
-  comunitarios afectados.
+- Al retirar sus adhesiones, se recalculan la prioridad y la mayoría de
+  votos de resolución de los reclamos comunitarios afectados; si con eso
+  se alcanza la mayoría, el reclamo pasa a "Resuelto" (CU-028).
 - Los reclamos registrados por el usuario y su historial se conservan.

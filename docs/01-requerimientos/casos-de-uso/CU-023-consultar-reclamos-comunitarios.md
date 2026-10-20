@@ -34,6 +34,7 @@
      - Título.
      - Ubicación compartida.
      - Rubro ("Sin categorizar" si todavía no fue categorizado).
+     - Autor (nombre y apellido).
      - Estado.
      - Cantidad de adhesiones.
      - Fecha de registro.
@@ -44,8 +45,8 @@
      del listado se encuentran los controles para pasar de una página a
      otra. Para cada reclamo se muestra el botón "Ver detalle" y, si el
      residente no lo registró, no adhirió todavía y el reclamo está en
-     estado "Ingresado", "Asignado", "En curso", "Esperando
-     repuesto/tercero" o "Reabierto", el botón "Adherir".
+     estado "Ingresado", "Asignado", "En curso" o "Esperando
+     repuesto/tercero", el botón "Adherir".
      Punto de extensión: "GestionarReclamoComunitario".
    - Si no hay resultados, muestra el mensaje "No se encontraron reclamos
      comunitarios con los filtros seleccionados".
@@ -63,6 +64,5 @@ Ninguno.
 ## Observaciones
 
 - Son comunitarios todos los reclamos registrados sobre una ubicación
-  compartida, excepto los de convivencia (ver CU-021).
-- El listado no muestra quién registró cada reclamo, para preservar la
-  privacidad de los residentes.
+  compartida, incluidos los de convivencia (ver CU-021).
+- No hay anonimato: el listado muestra quién registró cada reclamo.

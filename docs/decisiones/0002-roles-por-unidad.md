@@ -52,10 +52,13 @@ Se adopta la opción C:
   invitación pendiente reserva el rol de la unidad.
 - Desvincular (CU-007) y dar de baja (CU-008) no pueden dejar a un
   inquilino sin propietario: primero hay que desvincular al inquilino.
-- Visibilidad: el propietario ve los reclamos de su unidad mientras sea su
-  propietario; al desvincularse, cada usuario conserva solo los reclamos
-  que registró, y el nuevo ocupante no ve los de los anteriores. El
-  historial por ubicación (CU-034) sí muestra al propietario todos los
-  reclamos de su unidad, pero sin acceso al detalle de los ajenos.
+- Visibilidad: el propietario actual ve todos los reclamos de su unidad,
+  con su detalle, incluidos los registrados antes de que fuera
+  propietario (el historial pertenece a la unidad). Al desvincularse, cada
+  usuario conserva solo los reclamos que registró. El inquilino actual
+  ve los reclamos registrados sobre la unidad mientras vive en ella, pero
+  no los de ocupantes anteriores. *(Ajustado el 2026-10-20 en la
+  revisión de supuestos: antes el propietario veía solo el listado de los
+  reclamos anteriores, sin detalle.)*
 - Un usuario puede quedar sin unidades y seguir entrando para consultar
   sus reclamos anteriores, pero no puede registrar reclamos nuevos.

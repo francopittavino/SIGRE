@@ -17,7 +17,7 @@
 1. El caso de uso comienza cuando el administrador presiona "Categorizar"
    sobre un reclamo seleccionado.
 2. El sistema valida que el reclamo esté en estado "Ingresado",
-   "Asignado", "En curso", "Esperando repuesto/tercero" o "Reabierto".
+   "Asignado", "En curso" o "Esperando repuesto/tercero".
 3. El sistema muestra el número, el título, la descripción y la ubicación
    del reclamo, y los siguientes campos y, debajo, el botón "Guardar":
    - Rubro: lista desplegable, obligatoria, que contiene los rubros
@@ -34,8 +34,8 @@
      del rubro seleccionado, y se recalcula al cambiar de rubro.
 
    Debajo de la prioridad se muestra la cantidad de adhesiones y la
-   prioridad resultante (asignada más un nivel cada 3 adhesiones, con tope
-   "Urgente").
+   prioridad resultante (asignada más un nivel por cada 20 % de los
+   residentes activos que adhirieron, con tope "Urgente"; ver CU-027).
 4. El administrador confirma o modifica los datos y presiona "Guardar".
 5. El sistema valida que los campos cumplan con el formato requerido.
 6. El sistema guarda el rubro, la prioridad asignada y la fecha objetivo, y
@@ -44,9 +44,7 @@
 7. Si el reclamo estaba en estado "Ingresado", el sistema:
    a. cambia el estado a "Asignado" y lo registra en el historial.
    b. include(Enviar notificación por email), con el aviso del cambio de
-      estado y el rubro asignado, dirigido al autor del reclamo, a sus
-      adherentes y, si el autor no es el propietario de la unidad, al
-      propietario.
+      estado y el rubro asignado, dirigido a los interesados del reclamo (ver CU-038).
 8. El sistema muestra el mensaje "El reclamo N° *número* fue
    categorizado".
 
@@ -75,6 +73,10 @@
 - La primera categorización es la que hace pasar el reclamo de
   "Ingresado" a "Asignado". En los demás estados abiertos el administrador
   puede recategorizar el reclamo sin cambiar su estado.
+- El plazo objetivo se cuenta desde la categorización, no desde el
+  registro: la fecha objetivo es la que se usa para marcar un reclamo como
+  "Vencido" y para medir la resolución fuera de plazo en los reportes
+  (CU-035).
 - Cuando el administrador recategoriza un reclamo ya categorizado, la
   fecha objetivo no se recalcula sola: se mantiene la vigente y el
   administrador puede ajustarla.

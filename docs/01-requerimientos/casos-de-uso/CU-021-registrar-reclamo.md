@@ -39,8 +39,7 @@
      o PNG, de hasta 5 MB cada uno.
 3. El residente completa los campos y presiona "Registrar".
 4. El sistema valida que los campos cumplan con el formato requerido.
-5. Si la ubicación es una ubicación compartida y no se marcó "Es un
-   problema de convivencia", el sistema busca los reclamos abiertos sobre
+5. Si la ubicación es una ubicación compartida, el sistema busca los reclamos abiertos sobre
    esa ubicación.
    - Si hay resultados, muestra el mensaje "Ya hay reclamos abiertos sobre
      *nombre de la ubicación*. Si es el mismo problema, podés adherir en
@@ -62,8 +61,7 @@
    - el residente como autor.
    - la ubicación, la indicación de convivencia y la unidad involucrada, si
      corresponde.
-   - la indicación de comunitario, si la ubicación es compartida y no es
-     un problema de convivencia.
+   - la indicación de comunitario, si la ubicación es compartida.
    - prioridad base "Media".
    - el rubro sugerido, si se obtuvo.
    - el título, la descripción y las fotos.
@@ -71,7 +69,10 @@
    Además, registra en el historial del reclamo el alta con estado
    "Ingresado", la fecha y hora y el autor.
 8. include(Enviar notificación por email), con el aviso de nuevo reclamo,
-   dirigido al administrador.
+   dirigido al administrador. Si el reclamo es comunitario, también se
+   envía, con un enlace al reclamo para ver el detalle o adherir, a todos
+   los residentes activos del espacio (usuarios en estado "Activo" con al
+   menos una unidad vinculada), excepto al autor.
 9. El sistema muestra el mensaje "Tu reclamo N° *número* fue registrado.
    Te avisaremos por email cada vez que cambie de estado".
 
@@ -90,17 +91,19 @@
 
 ## Observaciones
 
-- Los reclamos sobre una ubicación compartida son comunitarios: todos los
-  propietarios e inquilinos del espacio pueden verlos y adherir a ellos.
-  Los reclamos de convivencia nunca son comunitarios, aunque se registren
-  sobre una ubicación compartida, y no son visibles para la unidad
-  involucrada.
+- Los reclamos sobre una ubicación compartida son comunitarios, también
+  los de convivencia: todos los propietarios e inquilinos del espacio
+  pueden verlos y adherir a ellos. Por eso, al registrarse uno, se avisa
+  a todos los residentes activos.
+- Un reclamo de convivencia sobre una unidad no es comunitario: lo ven el
+  autor, la administración y el propietario y el inquilino actuales de la
+  unidad involucrada, que ven también quién lo registró (ver CU-024).
 - El rubro sugerido no es definitivo: el administrador lo confirma o lo
   cambia al categorizar el reclamo (CU-031). Si la sugerencia no puede
   obtenerse, el reclamo se registra sin rubro sugerido.
 - La prioridad base "Media" es provisoria hasta que el administrador
-  categoriza el reclamo. Las adhesiones suben la prioridad un nivel cada 3
-  adherentes (ver CU-027).
+  categoriza el reclamo. Las adhesiones suben la prioridad un nivel por
+  cada 20 % de los residentes activos que adhirieron (ver CU-027).
 - Un usuario sin unidades vinculadas no puede registrar reclamos; solo
   consulta los que registró anteriormente.
 - Si la unidad involucrada en un problema de convivencia no figura en el

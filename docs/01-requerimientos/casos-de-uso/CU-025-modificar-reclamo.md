@@ -35,9 +35,8 @@
 6. El sistema valida que los campos cumplan con el formato requerido.
 7. Si se modificó el título, la descripción o la indicación de
    convivencia, include(Sugerir rubro de reclamo), con los nuevos datos.
-8. El sistema guarda los cambios, recalcula la indicación de comunitario
-   según la ubicación y la indicación de convivencia, y registra en el
-   historial del reclamo la modificación, con la fecha y hora y el autor.
+8. El sistema guarda los cambios y registra en el historial del reclamo
+   la modificación, con la fecha y hora y el autor.
 9. El sistema muestra el mensaje "Tu reclamo N° *número* fue actualizado".
 
 ## Flujos alternativos

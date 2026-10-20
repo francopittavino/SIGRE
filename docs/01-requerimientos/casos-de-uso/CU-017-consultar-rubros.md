@@ -55,3 +55,12 @@ Ninguno.
 ## Observaciones
 
 - Los rubros dados de baja no muestran botones: la baja es definitiva.
+- Al crearse el espacio, el sistema carga un conjunto inicial de rubros
+  activos, que el administrador puede modificar o dar de baja como
+  cualquier otro:
+  - Mantenimiento: Plomería, Electricidad, Gas, Ascensores, Limpieza,
+    Albañilería, Portones y accesos.
+  - Convivencia: Ruidos molestos, Mascotas, Uso de espacios comunes.
+
+  Así la sugerencia automática de rubro (CU-037) funciona desde el primer
+  reclamo.

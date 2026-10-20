@@ -22,7 +22,7 @@
    - Estado: lista desplegable, opcional, con las opciones "Abiertos"
      (todos excepto "Cerrado", "Rechazado" y "Cancelado"), "Todos",
      "Ingresado", "Asignado", "En curso", "Esperando repuesto/tercero",
-     "Resuelto", "Reabierto", "Cerrado", "Rechazado" y "Cancelado". Valor
+     "Resuelto", "Cerrado", "Rechazado" y "Cancelado". Valor
      por defecto: "Abiertos".
    - Rubro: lista desplegable, opcional, que contiene "Todos", "Sin
      categorizar" y todos los rubros del espacio, ordenados
@@ -82,6 +82,6 @@ Ninguno.
 - El orden por defecto (prioridad y antigüedad) busca que el administrador
   atienda primero los reclamos más urgentes y los que llevan más tiempo
   esperando.
-- Un reclamo en estado "Resuelto" queda a la espera de la confirmación del
-  residente (CU-028, CU-029) o del cierre automático (CU-036), por lo que
-  no muestra acciones de gestión.
+- Un reclamo en estado "Resuelto" ya no admite cambios de estado: queda a
+  la espera del cierre automático (CU-036), por lo que no muestra acciones
+  de gestión.

@@ -22,10 +22,9 @@
    | Estado actual | Estados posibles |
    |---|---|
    | Ingresado | Rechazado |
-   | Asignado | En curso, Rechazado |
+   | Asignado | En curso, Resuelto, Rechazado |
    | En curso | Esperando repuesto/tercero, Resuelto |
    | Esperando repuesto/tercero | En curso, Resuelto |
-   | Reabierto | En curso, Resuelto |
 
 3. El sistema muestra el número, el título y el estado actual del
    reclamo, y los siguientes campos y, debajo, el botón "Guardar":
@@ -43,11 +42,9 @@
    estado anterior, el nuevo y el comentario, si se indicó. El comentario
    también se agrega a los comentarios visibles del reclamo.
 7. include(Enviar notificación por email), con el nuevo estado y el
-   comentario, dirigido al autor del reclamo, a sus adherentes y, si el
-   autor no es el propietario de la unidad, al propietario. Si el nuevo
-   estado es "Resuelto", el aviso indica además que el autor tiene 7 días
-   para confirmar la resolución o reabrir el reclamo, o se cerrará
-   automáticamente.
+   comentario, dirigido a los interesados del reclamo (ver CU-038). Si el nuevo estado es
+   "Resuelto", el aviso indica además que el reclamo se cerrará
+   automáticamente en 7 días.
 8. El sistema muestra el mensaje "El reclamo N° *número* pasó a estado
    *nuevo estado*".
 
@@ -73,8 +70,11 @@
 
 - El paso de "Ingresado" a "Asignado" no se hace desde aquí, sino al
   categorizar el reclamo (CU-031).
-- Los pasos de "Resuelto" a "Cerrado" o a "Reabierto" los realiza el
-  residente (CU-028, CU-029) o el sistema (CU-036).
+- El autor del reclamo también puede pasarlo a "Resuelto" desde cualquier
+  estado abierto (CU-028).
+- "Resuelto" no admite reapertura: a los 7 días el sistema lo pasa a
+  "Cerrado" (CU-036). Si el problema persiste, se registra un reclamo
+  nuevo.
 - "Rechazado" es un estado final. Un reclamo rechazado no puede reabrirse;
   si el residente no está de acuerdo, registra un reclamo nuevo.
 - El historial es inmutable: los registros no pueden editarse ni

@@ -38,13 +38,13 @@
      columna.
    - **Tiempos de resolución:** para cada rubro, la cantidad de reclamos
      resueltos, el promedio y el máximo de días desde el registro hasta la
-     primera resolución, el plazo objetivo del rubro y el porcentaje de
+     resolución, el plazo objetivo del rubro y el porcentaje de
      reclamos resueltos fuera de plazo; y los mismos valores para el total.
    - **Reclamos recurrentes por ubicación:** las combinaciones de
      ubicación y rubro con una cantidad de reclamos mayor o igual al
      mínimo indicado, ordenadas por cantidad en forma descendente. Para
-     cada una se muestra la ubicación, el rubro, la cantidad de reclamos,
-     la cantidad de reaperturas y la fecha del último reclamo.
+     cada una se muestra la ubicación, el rubro, la cantidad de reclamos
+     y la fecha del último reclamo.
 
    Si no hay reclamos en el período, el sistema muestra el mensaje "No hay
    reclamos registrados en el período seleccionado".
@@ -66,9 +66,13 @@ Ninguno.
 
 ## Observaciones
 
-- Los reportes de tiempos usan la primera vez que el reclamo pasó a
-  "Resuelto": si después se reabrió, la reapertura se refleja en la
-  cantidad de reaperturas y no en el tiempo de resolución.
+- Los reportes de tiempos usan la fecha en que el reclamo pasó a
+  "Resuelto", ya sea por la administración (CU-032) o por su autor
+  (CU-028).
+- Un reclamo se considera resuelto fuera de plazo si pasó a "Resuelto"
+  después de su fecha objetivo de resolución, que se
+  fija al categorizarlo (CU-031). Los días hasta la resolución, en cambio,
+  se cuentan desde la fecha de registro.
 - El reporte de reclamos recurrentes apunta al problema económico
   planteado en el alcance: detectar reparaciones que se repiten sobre una
   misma unidad o instalación.

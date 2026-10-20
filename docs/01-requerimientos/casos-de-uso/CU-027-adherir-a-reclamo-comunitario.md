@@ -17,8 +17,8 @@
 1. El caso de uso comienza cuando el residente presiona "Adherir" sobre un
    reclamo comunitario seleccionado.
 2. El sistema valida que:
-   - el reclamo esté en estado "Ingresado", "Asignado", "En curso",
-     "Esperando repuesto/tercero" o "Reabierto".
+   - el reclamo esté en estado "Ingresado", "Asignado", "En curso" o
+     "Esperando repuesto/tercero".
    - el residente no sea el autor del reclamo.
    - el residente no haya adherido ya al reclamo.
 3. El sistema muestra el mensaje "¿Querés adherir al reclamo N° *número*
@@ -26,8 +26,9 @@
    botones "Adherir" y "Volver".
 4. El residente presiona "Adherir".
 5. El sistema registra la adhesión con la fecha y hora y recalcula la
-   prioridad del reclamo: la prioridad asignada sube un nivel por cada 3
-   adhesiones, con tope "Urgente".
+   prioridad del reclamo: la prioridad asignada sube un nivel por cada
+   20 % de los residentes activos del espacio que adhirieron, con tope
+   "Urgente".
 6. Si la prioridad cambió, el sistema registra el cambio en el historial
    del reclamo, con la fecha y hora y el motivo "Aumento por adhesiones".
 7. El sistema muestra el mensaje "Adheriste al reclamo N° *número*. Ya son
@@ -50,8 +51,15 @@
 ## Observaciones
 
 - La prioridad de un reclamo es la asignada por el administrador (o la
-  base "Media" si todavía no fue categorizado) más un nivel por cada 3
-  adhesiones. Por ejemplo, un reclamo de prioridad "Baja" con 6 adhesiones
-  queda en "Alta".
+  base "Media" si todavía no fue categorizado) más un nivel por cada 20 %
+  de los residentes activos que adhirieron, redondeando hacia abajo. Son
+  residentes activos los usuarios en estado "Activo" con al menos una
+  unidad vinculada, contados al momento del cálculo. Por ejemplo, en un
+  espacio con 50 residentes activos, un reclamo de prioridad "Baja" con 20
+  adhesiones (40 %) queda en "Alta".
+- Se usa un porcentaje y no una cantidad fija para que el criterio sirva
+  igual en espacios chicos y grandes.
+- Al adherir, el residente pasa a participar de la votación para dar el
+  reclamo por resuelto (CU-028).
 - Las adhesiones no se retiran a pedido del residente; solo se retiran
   cuando el residente es dado de baja (CU-008).

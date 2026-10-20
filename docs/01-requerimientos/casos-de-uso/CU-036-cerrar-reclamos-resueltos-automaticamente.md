@@ -4,7 +4,7 @@
 |---|---|
 | **ID** | CU-036 |
 | **Nombre** | Cerrar reclamos resueltos automáticamente |
-| **Breve descripción** | Cierra automáticamente los reclamos que permanecen en estado "Resuelto" durante más de 7 días sin que su autor confirme la resolución ni los reabra. |
+| **Breve descripción** | Cierra automáticamente los reclamos que permanecen en estado "Resuelto" durante más de 7 días. |
 | **Prioridad** | Media |
 | **Complejidad** | Baja |
 | **Actor principal** | Tiempo (todos los días a las 00:00 hs) |
@@ -20,10 +20,10 @@
 3. Para cada reclamo obtenido en el paso anterior, el sistema:
    a. cambia el estado del reclamo a "Cerrado".
    b. registra en el historial del reclamo el cierre, con la fecha y hora,
-      el autor "Sistema" y el motivo "Cierre automático: no se confirmó ni
-      se reabrió en 7 días".
+      el autor "Sistema" y el motivo "Cierre automático a los 7 días de
+      resuelto".
    c. include(Enviar notificación por email), con el aviso de cierre
-      automático, dirigido al autor del reclamo y a sus adherentes.
+      automático, dirigido al administrador y a los interesados del reclamo (ver CU-038).
 4. Finaliza el caso de uso.
 
 ## Flujos alternativos
@@ -37,7 +37,10 @@ Ninguno.
 
 ## Observaciones
 
-- El plazo de 7 días es el mismo que se informa al residente cuando el
-  administrador marca el reclamo como "Resuelto" (CU-032).
+- El plazo de 7 días es el mismo que se informa cuando el reclamo pasa a
+  "Resuelto" (CU-028, CU-032). Mientras tanto, el reclamo sigue admitiendo
+  comentarios (CU-033).
 - Si el autor del reclamo fue dado de baja, el reclamo igualmente se
-  cierra al cumplirse el plazo y el aviso se envía solo a los adherentes.
+  cierra al cumplirse el plazo y el aviso se envía a los demás
+  destinatarios (a los usuarios dados de baja no se les envían
+  notificaciones, ver CU-038).

@@ -27,7 +27,9 @@
 7. El sistema cambia el estado del reclamo a "Cancelado" y registra en el
    historial del reclamo la cancelación, con la fecha y hora, el autor y
    el motivo, si se indicó.
-8. El sistema muestra el mensaje "El reclamo N° *número* fue cancelado".
+8. include(Enviar notificación por email), con el aviso de cancelación y
+   el motivo, si se indicó, dirigido al administrador.
+9. El sistema muestra el mensaje "El reclamo N° *número* fue cancelado".
 
 ## Flujos alternativos
 
@@ -56,3 +58,6 @@
 - Un reclamo con adhesiones no se cancela porque afecta a otros
   residentes; mismo criterio que en la baja de usuario (CU-008).
 - "Cancelado" es un estado final: el reclamo no puede reabrirse.
+- La cancelación solo se notifica al administrador: como el reclamo no
+  tiene adhesiones y todavía no fue categorizado, no hay otros
+  interesados.

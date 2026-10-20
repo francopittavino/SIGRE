@@ -92,8 +92,9 @@
 - Desvincular no borra información: los reclamos que el usuario registró
   sobre esa unidad y su historial se conservan. El usuario sigue viendo los
   reclamos que él mismo registró, pero no los que se registren después
-  sobre esa unidad; el nuevo propietario o inquilino de la unidad no ve los
-  reclamos de quienes la ocuparon antes.
+  sobre esa unidad. El nuevo inquilino no ve los reclamos registrados
+  antes de su llegada; el nuevo propietario sí, porque el propietario actual ve
+  todo el historial de su unidad (ver CU-024).
 - Un usuario puede quedar sin unidades vinculadas y sigue pudiendo iniciar
   sesión para consultar sus reclamos anteriores. Para impedirle el acceso
   se lo da de baja (CU-008).

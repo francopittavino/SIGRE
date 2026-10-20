@@ -61,10 +61,10 @@
 | CU-023 | Consultar reclamos comunitarios | Residente | punto de extensión |
 | CU-024 | Ver detalle de reclamo | Residente, Administrador | extend CU-022, CU-023, CU-030, CU-034; punto de extensión |
 | CU-025 | Modificar reclamo | Residente | extend CU-024; include CU-037 |
-| CU-026 | Cancelar reclamo | Residente | extend CU-024 |
+| CU-026 | Cancelar reclamo | Residente | extend CU-024; include CU-038 |
 | CU-027 | Adherir a reclamo comunitario | Residente | extend CU-021, CU-023 |
-| CU-028 | Confirmar resolución de reclamo | Residente | extend CU-024; include CU-038 |
-| CU-029 | Reabrir reclamo | Residente | extend CU-024; include CU-038 |
+| CU-028 | Marcar reclamo como resuelto | Residente | extend CU-024; include CU-038 |
+| ~~CU-029~~ | ~~Reabrir reclamo~~ — eliminado en la revisión del 2026-10-20 (ver ADR 0004); el número no se reutiliza | | |
 | **Reclamos del administrador** | | | |
 | CU-030 | Consultar reclamos | Administrador | punto de extensión |
 | CU-031 | Categorizar reclamo | Administrador | extend CU-030; include CU-038 |
@@ -113,27 +113,46 @@
   residente) y CU-008 (baja del usuario).
 - Prioridad del reclamo: niveles Baja / Media / Alta / Urgente. Base
   "Media" al registrarse; el administrador la fija al categorizar
-  (CU-031). Las adhesiones suben un nivel cada 3 adherentes, con tope
-  "Urgente".
+  (CU-031). Las adhesiones suben un nivel por cada 20 % de los residentes
+  activos del espacio que adhirieron, con tope "Urgente".
+- Sin anonimato: quien tiene acceso a un reclamo ve su autor, sus
+  adherentes y el nombre de quien escribió cada comentario. Solo los
+  comentarios internos del administrador quedan ocultos a los residentes.
 - Reclamos de convivencia: el residente marca "Es un problema de
-  convivencia" y puede indicar la unidad involucrada. Nunca son
-  comunitarios ni visibles para la unidad involucrada. La IA sugiere solo
+  convivencia" y puede indicar la unidad involucrada. Si se registran
+  sobre una ubicación compartida son comunitarios, como cualquier otro.
+  Si se registran sobre una unidad, los ven el autor, la administración y
+  el propietario y el inquilino actuales de la unidad involucrada, que ven
+  quién lo registró (sin anonimato) y pueden comentar. La IA sugiere solo
   rubros del tipo correspondiente.
 - Al registrar un reclamo sobre una ubicación compartida con reclamos
   abiertos, el sistema ofrece adherir (CU-027 extiende CU-021).
 - Un usuario sin unidades vinculadas no puede registrar reclamos.
-- Circuito de estados (CU-031, CU-032): Ingresado → Asignado (al
-  categorizar) o Rechazado; Asignado → En curso o Rechazado; En curso →
-  Esperando repuesto/tercero o Resuelto; Esperando → En curso o Resuelto;
-  Reabierto → En curso o Resuelto; Resuelto → Cerrado o Reabierto (lo
-  decide el residente o el cierre automático). Finales: Cerrado,
-  Rechazado, Cancelado. Rechazar y Resolver exigen comentario.
-- Notificaciones de cambio de estado: al autor, a los adherentes y al
-  propietario de la unidad si no es el autor.
+- Circuito de estados (CU-028, CU-031, CU-032, ADR 0004): Ingresado →
+  Asignado (al categorizar) o Rechazado; Asignado → En curso, Resuelto o
+  Rechazado;
+  En curso → Esperando repuesto/tercero o Resuelto; Esperando → En curso o
+  Resuelto. Además, el autor puede pasar su reclamo a Resuelto desde
+  cualquier estado abierto; si es comunitario, hace falta la mayoría de
+  autor y adherentes (CU-028). Resuelto → Cerrado a los 7 días
+  (CU-036); no hay reapertura. Finales: Cerrado, Rechazado, Cancelado.
+  Rechazar y Resolver exigen comentario.
+- Notificaciones de cambio de estado: a los interesados del reclamo
+  (autor, adherentes, propietario de la unidad si no es el autor y, en
+  convivencia, propietario e inquilino de la unidad involucrada; ver
+  CU-038).
+- Visibilidad por unidad: el propietario actual ve todos los reclamos de
+  su unidad, incluidos los anteriores a que lo fuera; el inquilino actual
+  ve los registrados mientras vive en ella (ADR 0002).
 - Hay un único administrador por espacio; no se invitan administradores.
+- Rubros precargados: al crearse el espacio se carga un conjunto inicial
+  de rubros de mantenimiento y de convivencia (detalle en CU-017), que el
+  administrador puede modificar o dar de baja.
+- La cancelación de un reclamo (CU-026) se notifica al administrador.
+- Un reclamo comunitario nuevo (CU-021) se notifica a todos los residentes
+  activos del espacio, además del administrador.
 - Si se invita a un email que ya tiene cuenta, la nueva unidad se asocia a
   esa cuenta (con aviso por email), sin un registro nuevo. No se puede
   invitar a una unidad cuyo rol ya está ocupado.
-- Cierre: el admin marca Resuelto; el residente confirma (→ Cerrado) o
-  reabre (→ Reabierto); si no responde en 7 días, CU-036 lo cierra solo
-  (todos los días a las 00:00 hs).
+- Cierre: el admin (CU-032) o el autor (CU-028) marcan Resuelto; a los
+  7 días CU-036 lo pasa a Cerrado (todos los días a las 00:00 hs).
