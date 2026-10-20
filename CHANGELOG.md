@@ -22,3 +22,16 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
   (`docs/01-requerimientos/`), con inventario de actores y relaciones.
 - ADR 0002: roles de propietario e inquilino por unidad.
 - ADR 0003: circuito de estados del reclamo y cierre por confirmación.
+- ADR 0004: resolución por el autor (por mayoría en comunitarios) y
+  eliminación de la reapertura.
+
+### Changed
+
+- Revisión de supuestos de los casos de uso CU-009 a CU-038: visibilidad
+  por unidad, convivencia, sin anonimato, prioridad por porcentaje de
+  adhesiones, notificaciones y rubros precargados. ADR 0003 reemplazado
+  por el 0004.
+
+### Removed
+
+- CU-029 "Reabrir reclamo" y el estado "Reabierto".
