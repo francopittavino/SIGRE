@@ -1,7 +1,7 @@
 # 0003. Circuito de estados del reclamo y cierre por confirmación del residente
 
 Fecha: 2026-10-20
-Estado: Aceptada
+Estado: Reemplazada por 0004
 
 ## Contexto
 
