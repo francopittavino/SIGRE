@@ -1,0 +1,14 @@
+' Estilo común de los diagramas de casos de uso de SIGRE.
+' Se incluye desde diagrama-cu.puml y las vistas diagrama-cu-N-*.puml.
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FEFEFE
+  BorderColor #555555
+}
+skinparam note {
+  BackgroundColor #FFFFE0
+  BorderColor #999999
+}
+skinparam ArrowColor #555555
+skinparam defaultFontSize 12

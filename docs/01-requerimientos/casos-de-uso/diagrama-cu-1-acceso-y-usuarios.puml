@@ -1,0 +1,59 @@
+@startuml diagrama-cu-1-acceso-y-usuarios
+' Vista: Acceso, cuenta y usuarios (CU-001 a CU-008, CU-039).
+' Notación completa del material de cátedra: puntos de extensión en una nota
+' sobre el CU base y cada «extend» con condición y punto de extensión.
+' Debe ser consistente con diagrama-cu.puml (vista general) y el inventario.
+
+!include estilo-cu.iuml
+left to right direction
+
+actor "//Usuario//" as Usuario
+actor "//Residente//" as Residente
+actor "Administrador" as Admin
+actor "Servicio de Email" as Email
+Residente -up-|> Usuario
+Admin -up-|> Usuario
+
+rectangle "SIGRE" {
+  package "Acceso y cuenta" {
+    usecase "CU-001\nIniciar sesión" as CU001
+    usecase "CU-002\nRecuperar contraseña" as CU002
+    usecase "CU-003\nModificar datos de perfil" as CU003
+    usecase "CU-004\nCompletar registro" as CU004
+  }
+  package "Usuarios" {
+    usecase "CU-005\nConsultar usuarios" as CU005
+    usecase "CU-006\nInvitar usuario" as CU006
+    usecase "CU-007\nModificar usuario" as CU007
+    usecase "CU-008\nDar de baja usuario" as CU008
+    usecase "CU-039\nReactivar usuario" as CU039
+  }
+  package "Incluidos" {
+    usecase "CU-038\nEnviar notificación por email" as CU038
+  }
+}
+
+Usuario -- CU001
+Usuario -- CU002
+Usuario -- CU003
+Residente -- CU004
+Admin -- CU005
+Admin -- CU006
+CU038 -- Email
+
+CU002 ..> CU038 : <<include>>
+CU003 ..> CU038 : <<include>>
+CU006 ..> CU038 : <<include>>
+CU007 ..> CU038 : <<include>>
+CU008 ..> CU038 : <<include>>
+CU039 ..> CU038 : <<include>>
+
+CU007 .> CU005 : <<extend>>\ncondition: {modificar}\npunto de extensión: GestionarUsuarioExistente
+CU008 .> CU005 : <<extend>>\ncondition: {darDeBaja}\npunto de extensión: GestionarUsuarioExistente
+CU039 .> CU005 : <<extend>>\ncondition: {reactivar}\npunto de extensión: GestionarUsuarioExistente
+
+note "puntos de extensión:\nGestionarUsuarioExistente" as PE005
+PE005 .. CU005
+
+note "CU-004 lo ejecuta el residente invitado\n(propietario o inquilino), que todavía\nno tiene cuenta." as Aclaracion
+@enduml

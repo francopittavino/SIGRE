@@ -1,0 +1,63 @@
+@startuml diagrama-cu-4-reclamos-administrador
+' Vista: Reclamos del administrador, historial, reportes y automáticos (CU-030 a CU-036).
+' Notación completa del material de cátedra: puntos de extensión en una nota
+' sobre el CU base y cada «extend» con condición y punto de extensión.
+' Debe ser consistente con diagrama-cu.puml (vista general) y el inventario.
+
+!include estilo-cu.iuml
+left to right direction
+
+actor "Administrador" as Admin
+actor "//Residente//" as Residente
+actor "Propietario" as Propietario
+actor "Tiempo" as Tiempo
+actor "Servicio de Email" as Email
+Propietario -up-|> Residente
+
+rectangle "SIGRE" {
+  package "Reclamos del administrador" {
+    usecase "CU-030\nConsultar reclamos" as CU030
+    usecase "CU-031\nCategorizar reclamo" as CU031
+    usecase "CU-032\nCambiar estado de reclamo" as CU032
+    usecase "CU-033\nAgregar comentario a reclamo" as CU033
+  }
+  package "Historial y reportes" {
+    usecase "CU-034\nConsultar historial de ubicación" as CU034
+    usecase "CU-035\nGenerar reporte de reclamos" as CU035
+  }
+  package "Reclamos del residente" {
+    usecase "CU-024\nVer detalle de reclamo" as CU024
+  }
+  package "Automáticos e incluidos" {
+    usecase "CU-036\nCerrar reclamos resueltos\nautomáticamente" as CU036
+    usecase "CU-038\nEnviar notificación por email" as CU038
+  }
+}
+
+Admin -- CU030
+Admin -- CU034
+Admin -- CU035
+Propietario -- CU034
+Tiempo -- CU036
+CU038 -- Email
+
+CU031 ..> CU038 : <<include>>
+CU032 ..> CU038 : <<include>>
+CU033 ..> CU038 : <<include>>
+CU036 ..> CU038 : <<include>>
+
+CU031 .> CU030 : <<extend>>\ncondition: {categorizar}\npunto de extensión: GestionarReclamo
+CU032 .> CU030 : <<extend>>\ncondition: {cambiarEstado}\npunto de extensión: GestionarReclamo
+CU024 .> CU030 : <<extend>>\ncondition: {verDetalle}\npunto de extensión: GestionarReclamo
+CU024 .> CU034 : <<extend>>\ncondition: {verDetalle}\npunto de extensión: VerReclamoDelHistorial
+CU033 .> CU024 : <<extend>>\ncondition: {agregarComentario}\npunto de extensión: AccionesSobreReclamo
+
+note "puntos de extensión:\nAccionesSobreReclamo" as PE024
+PE024 .. CU024
+note "puntos de extensión:\nGestionarReclamo" as PE030
+PE030 .. CU030
+note "puntos de extensión:\nVerReclamoDelHistorial" as PE034
+PE034 .. CU034
+
+note "CU-024 (Ver detalle de reclamo) se detalla\nen la vista 3; acá aparece por los «extend»\nde CU-030, CU-034 y CU-033." as Aclaracion
+@enduml

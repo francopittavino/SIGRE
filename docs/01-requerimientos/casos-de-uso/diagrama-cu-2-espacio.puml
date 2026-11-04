@@ -1,0 +1,54 @@
+@startuml diagrama-cu-2-espacio
+' Vista: Unidades, ubicaciones compartidas y rubros (CU-009 a CU-020).
+' Notación completa del material de cátedra: puntos de extensión en una nota
+' sobre el CU base y cada «extend» con condición y punto de extensión.
+' Debe ser consistente con diagrama-cu.puml (vista general) y el inventario.
+
+!include estilo-cu.iuml
+left to right direction
+
+actor "Administrador" as Admin
+
+rectangle "SIGRE" {
+  package "Unidades" {
+    usecase "CU-009\nConsultar unidades" as CU009
+    usecase "CU-010\nAgregar unidad" as CU010
+    usecase "CU-011\nModificar unidad" as CU011
+    usecase "CU-012\nDar de baja unidad" as CU012
+  }
+  package "Ubicaciones compartidas" {
+    usecase "CU-013\nConsultar ubicaciones compartidas" as CU013
+    usecase "CU-014\nAgregar ubicación compartida" as CU014
+    usecase "CU-015\nModificar ubicación compartida" as CU015
+    usecase "CU-016\nDar de baja ubicación compartida" as CU016
+  }
+  package "Rubros" {
+    usecase "CU-017\nConsultar rubros" as CU017
+    usecase "CU-018\nAgregar rubro" as CU018
+    usecase "CU-019\nModificar rubro" as CU019
+    usecase "CU-020\nDar de baja rubro" as CU020
+  }
+}
+
+Admin -- CU009
+Admin -- CU010
+Admin -- CU013
+Admin -- CU014
+Admin -- CU017
+Admin -- CU018
+
+
+CU011 .> CU009 : <<extend>>\ncondition: {modificar}\npunto de extensión: GestionarUnidadExistente
+CU012 .> CU009 : <<extend>>\ncondition: {darDeBaja}\npunto de extensión: GestionarUnidadExistente
+CU015 .> CU013 : <<extend>>\ncondition: {modificar}\npunto de extensión: GestionarUbicacionExistente
+CU016 .> CU013 : <<extend>>\ncondition: {darDeBaja}\npunto de extensión: GestionarUbicacionExistente
+CU019 .> CU017 : <<extend>>\ncondition: {modificar}\npunto de extensión: GestionarRubroExistente
+CU020 .> CU017 : <<extend>>\ncondition: {darDeBaja}\npunto de extensión: GestionarRubroExistente
+
+note "puntos de extensión:\nGestionarUnidadExistente" as PE009
+PE009 .. CU009
+note "puntos de extensión:\nGestionarUbicacionExistente" as PE013
+PE013 .. CU013
+note "puntos de extensión:\nGestionarRubroExistente" as PE017
+PE017 .. CU017
+@enduml

@@ -156,6 +156,21 @@
   invitar a una unidad cuyo rol ya está ocupado.
 - Cierre: el admin (CU-032) o el autor (CU-028) marcan Resuelto; a los
   7 días CU-036 lo pasa a Cerrado (todos los días a las 00:00 hs).
-- Al revisar las fichas (sesión 2026-11-03) se encontró que las fichas CU-003, CU-007, CU-008 y
+- Diagrama (sesión 2026-11-03): un diagrama general (`diagrama-cu.puml`,
+  sección 4 de la plantilla 02) con todos los actores, CU e «include» /
+  «extend», más cuatro vistas por área (`diagrama-cu-N-*.puml`) con la
+  notación completa. Con todo en un solo diagrama, las etiquetas y notas lo
+  volvían ilegible. Las vistas siguen la notación del material de cátedra:
+  los puntos de extensión van en una nota sobre el CU base y cada «extend»
+  indica condición y punto de extensión. Entre todas las vistas cubren
+  exactamente las mismas relaciones que el general. El actor se
+  asocia solo al CU base; los CU que lo extienden no llevan línea propia al
+  actor (comparten el del CU base). Los incluidos (CU-037, CU-038) no
+  tienen actor principal; se asocian solo a su actor secundario.
+- CU-004 (Completar registro): en el diagrama el actor es Residente, porque
+  el invitado lo es siempre como propietario o inquilino de una unidad. No
+  se agrega un actor "Residente invitado" aparte; el diagrama lo aclara en
+  una nota.
+- Al armar el diagrama se encontró que las fichas CU-003, CU-007, CU-008 y
   CU-039 incluyen CU-038 y el inventario no lo registraba; se corrigió la
   columna de relaciones según las fichas.

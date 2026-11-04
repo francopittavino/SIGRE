@@ -1,0 +1,65 @@
+@startuml diagrama-cu-3-reclamos-residente
+' Vista: Reclamos del residente (CU-021 a CU-028).
+' Notación completa del material de cátedra: puntos de extensión en una nota
+' sobre el CU base y cada «extend» con condición y punto de extensión.
+' Debe ser consistente con diagrama-cu.puml (vista general) y el inventario.
+
+!include estilo-cu.iuml
+left to right direction
+
+actor "//Residente//" as Residente
+actor "Propietario" as Propietario
+actor "Inquilino" as Inquilino
+actor "Servicio de IA" as IA
+actor "Servicio de Email" as Email
+Propietario -up-|> Residente
+Inquilino -up-|> Residente
+
+rectangle "SIGRE" {
+  package "Reclamos del residente" {
+    usecase "CU-021\nRegistrar reclamo" as CU021
+    usecase "CU-022\nConsultar mis reclamos" as CU022
+    usecase "CU-023\nConsultar reclamos comunitarios" as CU023
+    usecase "CU-024\nVer detalle de reclamo" as CU024
+    usecase "CU-025\nModificar reclamo" as CU025
+    usecase "CU-026\nCancelar reclamo" as CU026
+    usecase "CU-027\nAdherir a reclamo comunitario" as CU027
+    usecase "CU-028\nMarcar reclamo como resuelto" as CU028
+  }
+  package "Incluidos" {
+    usecase "CU-037\nSugerir rubro de reclamo" as CU037
+    usecase "CU-038\nEnviar notificación por email" as CU038
+  }
+}
+
+Residente -- CU021
+Residente -- CU022
+Residente -- CU023
+CU037 -- IA
+CU038 -- Email
+
+CU021 ..> CU037 : <<include>>
+CU021 ..> CU038 : <<include>>
+CU025 ..> CU037 : <<include>>
+CU026 ..> CU038 : <<include>>
+CU028 ..> CU038 : <<include>>
+
+CU027 .> CU021 : <<extend>>\ncondition: {adherir}\npunto de extensión: ReclamoSimilarExistente
+CU027 .> CU023 : <<extend>>\ncondition: {adherir}\npunto de extensión: GestionarReclamoComunitario
+CU024 .> CU022 : <<extend>>\ncondition: {verDetalle}\npunto de extensión: GestionarMiReclamo
+CU024 .> CU023 : <<extend>>\ncondition: {verDetalle}\npunto de extensión: GestionarReclamoComunitario
+CU025 .> CU024 : <<extend>>\ncondition: {modificar}\npunto de extensión: AccionesSobreReclamo
+CU026 .> CU024 : <<extend>>\ncondition: {cancelar}\npunto de extensión: AccionesSobreReclamo
+CU028 .> CU024 : <<extend>>\ncondition: {marcarComoResuelto}\npunto de extensión: AccionesSobreReclamo
+
+note "puntos de extensión:\nReclamoSimilarExistente" as PE021
+PE021 .. CU021
+note "puntos de extensión:\nGestionarMiReclamo" as PE022
+PE022 .. CU022
+note "puntos de extensión:\nGestionarReclamoComunitario" as PE023
+PE023 .. CU023
+note "puntos de extensión:\nAccionesSobreReclamo" as PE024
+PE024 .. CU024
+
+note "CU-024 también extiende CU-030 y CU-034,\ny CU-033 extiende CU-024 (ver vista 4).\nCU-029 fue eliminado (ADR 0004)." as Aclaracion
+@enduml
