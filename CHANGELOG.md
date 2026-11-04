@@ -24,6 +24,11 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
 - ADR 0003: circuito de estados del reclamo y cierre por confirmación.
 - ADR 0004: resolución por el autor (por mayoría en comunitarios) y
   eliminación de la reapertura.
+- Diagrama de casos de uso en PlantUML: diagrama general y cuatro vistas
+  por área, con imágenes PNG/SVG (`docs/01-requerimientos/casos-de-uso/`).
+- Requerimientos funcionales (RF-01 a RF-23) y no funcionales (RNF-01 a
+  RNF-06) (`docs/01-requerimientos/`).
+- ADR 0005: conservación de datos personales y política de privacidad.
 
 ### Changed
 
@@ -31,7 +36,14 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/).
   por unidad, convivencia, sin anonimato, prioridad por porcentaje de
   adhesiones, notificaciones y rubros precargados. ADR 0003 reemplazado
   por el 0004.
+- CU-004: aceptación obligatoria de la política de privacidad al
+  completar el registro.
 
 ### Removed
 
 - CU-029 "Reabrir reclamo" y el estado "Reabierto".
+
+### Fixed
+
+- Inventario de casos de uso: faltaban los «include» a CU-038 de CU-003,
+  CU-007, CU-008 y CU-039.
