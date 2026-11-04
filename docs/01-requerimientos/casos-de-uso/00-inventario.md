@@ -33,13 +33,13 @@
 | **Acceso y cuenta** | | | |
 | CU-001 | Iniciar sesión | Usuario | |
 | CU-002 | Recuperar contraseña | Usuario | include CU-038 |
-| CU-003 | Modificar datos de perfil | Usuario | |
+| CU-003 | Modificar datos de perfil | Usuario | include CU-038 |
 | CU-004 | Completar registro | Residente invitado | |
 | **Usuarios** | | | |
 | CU-005 | Consultar usuarios | Administrador | punto de extensión |
 | CU-006 | Invitar usuario | Administrador | include CU-038 |
-| CU-007 | Modificar usuario | Administrador | extend CU-005 |
-| CU-008 | Dar de baja usuario | Administrador | extend CU-005 |
+| CU-007 | Modificar usuario | Administrador | extend CU-005; include CU-038 |
+| CU-008 | Dar de baja usuario | Administrador | extend CU-005; include CU-038 |
 | **Unidades** | | | |
 | CU-009 | Consultar unidades | Administrador | punto de extensión |
 | CU-010 | Agregar unidad | Administrador | |
@@ -78,7 +78,7 @@
 | CU-037 | Sugerir rubro de reclamo | — (incluido) | secundario: Servicio de IA |
 | CU-038 | Enviar notificación por email | — (incluido) | secundario: Servicio de Email |
 | **Agregados después de aprobar el inventario** | | | |
-| CU-039 | Reactivar usuario | Administrador | extend CU-005 |
+| CU-039 | Reactivar usuario | Administrador | extend CU-005; include CU-038 |
 
 ## Decisiones de modelado
 
@@ -156,3 +156,6 @@
   invitar a una unidad cuyo rol ya está ocupado.
 - Cierre: el admin (CU-032) o el autor (CU-028) marcan Resuelto; a los
   7 días CU-036 lo pasa a Cerrado (todos los días a las 00:00 hs).
+- Al revisar las fichas (sesión 2026-11-03) se encontró que las fichas CU-003, CU-007, CU-008 y
+  CU-039 incluyen CU-038 y el inventario no lo registraba; se corrigió la
+  columna de relaciones según las fichas.
