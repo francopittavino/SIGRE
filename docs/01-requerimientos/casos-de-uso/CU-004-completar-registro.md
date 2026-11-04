@@ -35,15 +35,19 @@
      caracteres, con al menos una letra y un número.
    - Confirmar contraseña: campo de contraseña, obligatorio, debe
      coincidir con la contraseña.
+   - "Leí y acepto la política de privacidad": casilla de verificación,
+     obligatoria, con un enlace que abre la política de privacidad del
+     sistema.
 
    Debajo se muestra el botón "Registrarme".
 4. El invitado completa los campos y presiona "Registrarme".
 5. El sistema valida que los campos cumplan con el formato requerido.
 6. El sistema valida que no exista otra cuenta registrada con el mismo
    tipo y número de documento.
-7. El sistema crea la cuenta, la asocia a la unidad con el rol indicado en
-   la invitación, marca la invitación como utilizada, inicia la sesión del
-   usuario y muestra la pantalla de inicio con el mensaje "¡Bienvenido/a a
+7. El sistema crea la cuenta, registra la aceptación de la política de
+   privacidad con la fecha y hora, la asocia a la unidad con el rol
+   indicado en la invitación, marca la invitación como utilizada, inicia
+   la sesión del usuario y muestra la pantalla de inicio con el mensaje "¡Bienvenido/a a
    SIGRE!".
 
 ## Flujos alternativos
@@ -79,3 +83,7 @@
   después del registro; solo el administrador puede hacerlo (CU-007).
 - Las reglas de contraseña y de datos personales son las mismas que en
   CU-002 y CU-003.
+- La aceptación de la política de privacidad se agregó en la sesión del
+  2026-11-03, al redactar el RNF-06 (ver ADR 0005). Si el email invitado
+  ya tenía una cuenta, la aceptación registrada al crear esa cuenta sigue
+  vigente.
