@@ -6,6 +6,9 @@ Instrucciones para agentes que trabajan en este repo (SIGRE).
 
 El equipo (3 integrantes) usa dos skills para estructurar cada sesión de
 trabajo. Están versionadas en `.agents/skills/` y se invocan por nombre.
+Hay una copia idéntica en `.claude/skills/` para que Claude Code las
+encuentre (`/abrir-sesion`, `/cerrar-sesion`). **Si editás una, copiá el
+cambio a la otra** — las dos carpetas tienen que quedar iguales.
 
 - **`abrir-sesion`** (`.agents/skills/abrir-sesion/SKILL.md`) — se invoca al
   empezar a trabajar. Verifica que no haya trabajo colgado de una sesión
